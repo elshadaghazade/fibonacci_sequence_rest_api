@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibonacci REST Api</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Fibonacci Sequence API</h1>
+        </div>
+
+        <div class="endpoint1">
+            <h3>Fibonacci sequence</h3>
+            <strong>Endpoint:</strong> <br>
+            /fib/ <a href="/fib/" target="_blank" class="btn btn-primary">Go</a>
+            <hr>
+        </div>
+        <div class="endpoint2">
+            <h3>Fibonacci sequence</h3>
+            <em>Start index starts from zero, you have to enter only end index.</em><br><br>
+            <strong>Endpoint:</strong><br>
+            /fib/<input required type="number" class="end_idx" style="width:80px" max="90" min="0" placeholder="end index">/
+            <button type="button" class="btn btn-primary">Go</button>
+            <hr>
+        </div>
+        <div class="endpoint3">
+            <h3>Fibonacci sequence</h3>
+            <em>You have to enter start and end indexes. Range is between 0 to 90.</em><br><br>
+            <strong>Endpoint:</strong><br>
+            /fib/<input required type="number" class="start_idx" style="width:80px" max="90" min="0" placeholder="end index">/<input required type="number" class="end_idx" style="width:80px" max="90" min="0" placeholder="end index">/
+            <button type="button" class="btn btn-primary">Go</button>
+            <hr>
+        </div>
+        <div class="endpoint4">
+                <h3>Health Check</h3>
+                <em>Health check API provides us detailed information about server and endpoints performance</em><br><br>
+                <strong>Endpoint:</strong> <br>
+                /health/ <a href="/health/" target="_blank" class="btn btn-primary">Go</a>
+                <hr>
+            </div>
+    </div>
+
+    <script>
+        window.onload = () => {
+            document.querySelector('.endpoint2 .btn').onclick = () => {
+                end_idx = document.querySelector('.endpoint2 .end_idx').value
+                if (!end_idx.match(/^[\s\n\r\t]*$/)) {
+                    window.open('/fib/' + end_idx, target='_blank')
+                } else {
+                    alert("End index is empty")
+                }
+            }
+
+            document.querySelector('.endpoint3 .btn').onclick = () => {
+                start_idx = document.querySelector('.endpoint3 .start_idx').value
+                end_idx = document.querySelector('.endpoint3 .end_idx').value
+
+                if (!start_idx.match(/^[\s\n\r\t]*$/) || !end_idx.match(/^[\s\n\r\t]*$/)) {
+                    window.location.href = '/fib/' + start_idx + '/' + end_idx + '/'
+                } else {
+                    alert("Start or end index is empty")
+                }
+            }
+        }
+    </script>
+</body>
+</html>
