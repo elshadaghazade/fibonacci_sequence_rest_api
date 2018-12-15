@@ -48,6 +48,10 @@ def calc_fibonacci_sequence(request, start_idx=0, end_idx=0):
     return JsonResponse(response)
 
 
+# caching for a year
+@cache_page(31536000)
+# required method GET
+@require_http_methods(['GET'])
 def home(request):
     response = {
         'endpoints': [

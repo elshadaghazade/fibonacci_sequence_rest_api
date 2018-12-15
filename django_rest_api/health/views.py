@@ -2,7 +2,10 @@ from django.http import JsonResponse
 from .mymodules.health import SRM, endpointhealth
 from django.views.decorators.cache import cache_page
 
-@cache_page(31536000)
+# caching for a minute
+@cache_page(60)
+# required method GET
+@require_http_methods(['GET'])
 def health(request):
     
     data = SRM.get_datas()
