@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from .mymodules.health import SRM, endpointhealth
 from django.views.decorators.cache import cache_page
+from django.views.decorators.http import require_http_methods
 
 # caching for a minute
 @cache_page(60)
